@@ -49,8 +49,13 @@ public class MyPanel extends JPanel implements Observer{
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                list.push(list, Integer.parseInt(text1.getText()));
-                text2.setText(list.toString());
+                try {
+                    list.push(list, Integer.parseInt(text1.getText()));
+                    text2.setText(list.toString());
+                }
+                catch (NumberFormatException ex){
+                    text2.setText("List is not initialized");
+                }
             }
 
         });

@@ -10,9 +10,10 @@ package model;
  *
  * @author Netbeans
  */
-public abstract  class List {
+public class List{
 
     Node head;
+    Type tp;
 
     class  Node {
         int info;
@@ -31,29 +32,25 @@ public abstract  class List {
         }
     }
 
-    public abstract void pop();
-    public abstract int get();
-
-    public  void push(List list, int n) {
-        Node h = new Node(n, null);
-        if (list.head == null)
-            list.head = h;
-        else {
-            Node help;
-            for (help = list.head; help.next != null; help = help.next);
-            help.next = h;
-        }
-
-    }
-    
-    
     @Override
     public String toString() {
-        String res = this.getClass().getSimpleName() + ": ";;
-        for(Node h = head; h != null; h = h.next){
-            res += h.info + "->";
-        }
-        return res;
+        return tp.toString(this);
+    }
+
+    public void setTp(Type tp) {
+        this.tp = tp;
+    }
+
+    public void pop(List list) {
+        tp.pop(list);
+    }
+
+    public int get(List list) {
+        return tp.get(list);
+    }
+
+    public void push(List list, int info) {
+        tp.push(list, info);
     }
 
 }

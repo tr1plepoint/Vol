@@ -12,10 +12,10 @@ package model;
  *
  * @author Netbeans
  */
-public class Stack extends List{
+public class Stack extends List implements Type{
 
     @Override
-    public void pop() {
+    public void pop(List list) {
         Node help;
         for(help = head; help.next.next != null; help = help.next);
         help.next = null;
@@ -23,7 +23,7 @@ public class Stack extends List{
     }
 
     @Override
-    public int get() {
+    public int get(List list) {
         if (head != null) {
             Node h;
             for(h = head; h.next != null; h = h.next);
@@ -34,4 +34,20 @@ public class Stack extends List{
         }
     }
 
+    @Override
+    public void push(List list, int info) {
+        Node h = new Node(info, null);
+        h.next = list.head;
+        list.head = h;
+    }
+
+    @Override
+    public String toString(List list) {
+        String res = this.getClass().getSimpleName() + ": ";;
+        for(List.Node h = list.head; h != null; h = h.next){
+            res += h.info + "->";
+        }
+        return res;
+
+    }
 }

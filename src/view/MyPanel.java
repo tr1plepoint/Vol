@@ -34,6 +34,7 @@ public class MyPanel extends JPanel implements Observer{
     public MyPanel(Controller c) {
         
         this.controller = c;
+        list = new List();
         button = new JButton("Add");
         button1 = new JButton("Stack");
         button2 = new JButton("Queue");
@@ -63,7 +64,7 @@ public class MyPanel extends JPanel implements Observer{
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                list = new Stack();  
+                list.setTp(new Stack());
             }
 
         });
@@ -71,7 +72,7 @@ public class MyPanel extends JPanel implements Observer{
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                list = new Queue();  
+                list.setTp(new Queue());
             }
 
         });
